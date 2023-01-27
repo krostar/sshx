@@ -5,6 +5,7 @@ issues:
     - path: "_test\\.go"
       linters:
         - "errorlint"
+        - "dupl"
   exclude-use-default: false
   max-issues-per-linter: 0
   max-same-issues: 0
@@ -43,6 +44,8 @@ linters-settings:
     capital: true
     period: true
     scope: "toplevel"
+  gomnd:
+    ignored-numbers: ["10", "32", "64", "128"]
   gofumpt:
     extra-rules: true
   govet:
@@ -74,8 +77,6 @@ linters-settings:
       - name: "blank-imports"
       - name: "bool-literal-in-expr"
       - name: "call-to-gc"
-      - name: "confusing-naming"
-      - name: "confusing-results"
       - name: "constant-logical-expr"
       - name: "context-as-argument"
       - name: "context-keys-type"
@@ -93,6 +94,7 @@ linters-settings:
       - name: "error-return"
       - name: "error-strings"
       - name: "errorf"
+      - name: "exported"
       - name: "get-return"
       - name: "identical-branches"
       - name: "if-return"
@@ -124,7 +126,7 @@ linters-settings:
       - name: "var-naming"
       - name: "waitgroup-by-value"
   stylecheck:
-    checks: ["all", "-ST1000"]
+    checks: ["all", "-ST1000", "ST1020", "ST1021", "ST1022"]
   tagliatelle:
     case:
       rules:
@@ -190,9 +192,5 @@ linters:
     - "unused"
     - "usestdlibvars"
     - "whitespace"
-
-run:
-  skip-dirs:
-    - "internal/example"
 
 ...

@@ -11,7 +11,6 @@ import (
 	"gotest.tools/v3/assert/cmp"
 )
 
-//nolint:dupl // same as Test_clientTCPConnWithHardDeadline_Read because both object are doing similar things
 func Test_clientTCPConnWithSoftDeadline_Read(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
 		mockedConn := new(netConnMock)
@@ -53,7 +52,6 @@ func Test_clientTCPConnWithSoftDeadline_Read(t *testing.T) {
 	})
 }
 
-//nolint:dupl // same as Test_clientTCPConnWithHardDeadline_Write because both object are doing similar things
 func Test_clientTCPConnWithSoftDeadline_Write(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
 		mockedConn := new(netConnMock)
@@ -97,7 +95,6 @@ func Test_clientTCPConnWithSoftDeadline_Write(t *testing.T) {
 	})
 }
 
-//nolint:dupl // same as Test_clientTCPConnWithSoftDeadline_Read because both object are doing similar things
 func Test_clientTCPConnWithHardDeadline_Read(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
 		mockedConn := new(netConnMock)
@@ -145,7 +142,6 @@ func Test_clientTCPConnWithHardDeadline_Read(t *testing.T) {
 	})
 }
 
-//nolint:dupl // same as Test_clientTCPConnWithSoftDeadline_Write because both object are doing similar things
 func Test_clientTCPConnWithHardDeadline_Write(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
 		mockedConn := new(netConnMock)
