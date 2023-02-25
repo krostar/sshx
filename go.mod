@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/gliderlabs/ssh v0.3.5
 	github.com/google/go-cmp v0.5.9
-	github.com/stretchr/testify v1.8.1
+	github.com/stretchr/testify v1.8.2
 	go.uber.org/goleak v1.2.1
 	go.uber.org/multierr v1.9.0
 	golang.org/x/crypto v0.6.0
