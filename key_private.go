@@ -22,7 +22,7 @@ type PrivateKey interface {
 // WrapPrivateKey wraps the provided crypto.PrivateKey.
 func WrapPrivateKey(cryptoPrivKey crypto.PrivateKey) (PrivateKey, error) {
 	var pubKey PublicKey
-	{ // handle keys not implementing Public() interface{}.
+	{ // handle keys not implementing Public() any.
 		var cryptoPubKey crypto.PublicKey
 
 		if cryptoPrivKeyWithPublicKeyGetter, ok := cryptoPrivKey.(interface{ Public() crypto.PublicKey }); ok {

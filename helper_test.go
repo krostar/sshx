@@ -19,7 +19,7 @@ func TestMain(m *testing.M) {
 
 const errForTest sentinelError = "an error"
 
-func newTestingSSHServer(t *testing.T, listener net.Listener, rawCallbacks ...interface{}) (func(), <-chan error) {
+func newTestingSSHServer(t *testing.T, listener net.Listener, rawCallbacks ...any) (func(), <-chan error) {
 	var requestHandler map[string]gssh.RequestHandler
 	for _, rawCallback := range rawCallbacks {
 		if callback, ok := rawCallback.(map[string]gssh.RequestHandler); ok {
@@ -72,7 +72,7 @@ func newTestingSSHServer(t *testing.T, listener net.Listener, rawCallbacks ...in
 	}, cerr
 }
 
-func runTestingSSHServer(t *testing.T, assertFunc func(*Client), testingServerArgs ...interface{}) {
+func runTestingSSHServer(t *testing.T, assertFunc func(*Client), testingServerArgs ...any) {
 	t.Helper()
 
 	sshListener, err := net.Listen("tcp", "")

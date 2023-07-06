@@ -51,7 +51,7 @@ func Test_NewPublicKeyFromOpenSSHAuthorizedKeyFile(t *testing.T) {
 
 func Test_publicKey_Equal(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
-		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey interface{}, privKey PrivateKey) {
+		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey any, privKey PrivateKey) {
 			assert.NilError(t, privKey.PublicKey().Equal(privKey.PublicKey()))
 		})
 	})

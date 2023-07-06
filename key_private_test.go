@@ -24,7 +24,7 @@ import (
 
 func Test_WrapPrivateKey(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
-		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey interface{}, privKey PrivateKey) {
+		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey any, privKey PrivateKey) {
 			assert.Check(t, cmp.DeepEqual(rawPrivKey, privKey.Raw(), gocmp.AllowUnexported(big.Int{})))
 		})
 
@@ -142,7 +142,7 @@ func Test_NewPrivateKeyFromPEMFile(t *testing.T) {
 
 func Test_privateKey_Equal(t *testing.T) {
 	t.Run("ok", func(t *testing.T) {
-		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey interface{}, privKey PrivateKey) {
+		runForEachTypeOfPrivateKey(t, func(t *testing.T, rawPrivKey any, privKey PrivateKey) {
 			samePrivKey, err := WrapPrivateKey(rawPrivKey)
 			assert.NilError(t, err)
 			assert.Check(t, privKey.Equal(samePrivKey))
@@ -179,19 +179,19 @@ func Test_privateKey_Equal(t *testing.T) {
 	})
 }
 
-func runForEachTypeOfPrivateKey(t *testing.T, test func(t *testing.T, rawPrivKey interface{}, privKey PrivateKey)) {
-	for name, getPrivKey := range map[string]func(t *testing.T) interface{}{
-		"rsa": func(t *testing.T) interface{} {
+func runForEachTypeOfPrivateKey(t *testing.T, test func(t *testing.T, rawPrivKey any, privKey PrivateKey)) {
+	for name, getPrivKey := range map[string]func(t *testing.T) any{
+		"rsa": func(t *testing.T) any {
 			privKey, err := rsa.GenerateKey(rand.Reader, 2048)
 			assert.NilError(t, err)
 			return privKey
 		},
-		"ecdsa": func(t *testing.T) interface{} {
+		"ecdsa": func(t *testing.T) any {
 			privKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 			assert.NilError(t, err)
 			return privKey
 		},
-		"ed25519": func(t *testing.T) interface{} {
+		"ed25519": func(t *testing.T) any {
 			_, privKey, err := ed25519.GenerateKey(rand.Reader)
 			assert.NilError(t, err)
 			return privKey
