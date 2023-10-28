@@ -6,7 +6,7 @@ require (
 	github.com/gliderlabs/ssh v0.3.5
 	github.com/google/go-cmp v0.6.0
 	github.com/stretchr/testify v1.8.4
-	go.uber.org/goleak v1.2.1
+	go.uber.org/goleak v1.3.0
 	go.uber.org/multierr v1.11.0
 	golang.org/x/crypto v0.14.0
 	gotest.tools/v3 v3.5.1
