@@ -3,7 +3,7 @@ module github.com/krostar/sshx
 go 1.19
 
 require (
-	github.com/gliderlabs/ssh v0.3.5
+	github.com/gliderlabs/ssh v0.3.6
 	github.com/google/go-cmp v0.6.0
 	github.com/stretchr/testify v1.8.4
 	go.uber.org/goleak v1.3.0
